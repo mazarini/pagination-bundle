@@ -1,0 +1,39 @@
+{# lib/Resources/views/list.html.twig #}
+
+{% extends '@MazariniPagination/base.html.twig' %}
+
+{% block header %}
+    {% block header_data %}{% endblock header_data %}
+    {% block header_button_container %}
+        <th colspan="2">
+            {% block header_button %}
+                Action
+            {% endblock header_button %}
+        </th>
+    {% endblock header_button_container %}
+{% endblock header %}
+
+{% block row %}
+    {% block row_data %}{% endblock row_data %}
+    {% block row_button_container %}
+        {% block button_view_container %}
+            <td>
+                {% block button_view %}{% endblock button_view %}
+            </td>
+        {% endblock button_view_container %}
+        {% block button_edit_container %}
+            <td>
+                {% block button_edit %}{% endblock button_edit %}
+            </td>
+        {% endblock button_edit_container %}
+    {% endblock row_button_container %}
+{% endblock row %}
+
+{% block footer %}
+    {% block footer_data %}{% endblock footer_data %}
+    {% block button_create_container %}
+        <th colspan="2">
+            {% block button_create %}{% endblock button_create %}
+        </th>
+    {% endblock button_create_container %}
+{% endblock footer %}
