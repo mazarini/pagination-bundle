@@ -16,7 +16,7 @@ security:
 	security-checker security:check
 
 composer:
-	composer -vv validate --strict || true
+	composer -vv validate --strict
 
 twig:
 	bin/console lint:twig templates/ lib/Resources/views/
@@ -24,7 +24,7 @@ twig:
 	twigcs lib/Resources/views -vv
 
 yaml:
-	bin/console lint:yaml config lib/Resources/config phpstan.neon.dist .travis.yml
+	bin/console lint:yaml lib/Resources/config config phpstan.neon.dist .travis.yml
 
 cs:
 	php-cs-fixer fix
@@ -58,32 +58,38 @@ validate: security composer twig yaml stan cs
 dev:
 	composer config minimum-stability dev
 
+beta:
+	composer config minimum-stability beta
+
 stable:
 	composer config minimum-stability stable
 
 4.3: stable
 	composer config extra.symfony.require 4.3.*
 
-4.4: dev
+4.4: stable
 	composer config extra.symfony.require 4.4.*
 
-5.0: dev
+5.0: stable
 	composer config extra.symfony.require 5.0.*
+
+5.1: dev
+	composer config extra.symfony.require 5.1.*
 
 ############################################
 #               S E R V E R                #
 ############################################
 
 start:
-	bin/console server:start
+	symfony server:start
 
 stop:
-	bin/console server:stop
+	symfony server:stop
 
 restart: stop start
 
 status:
-	bin/console server:status
+	symfony server:status
 
 ############################################
 #             D A T A B A S E              #
@@ -114,8 +120,8 @@ clean:
 test:
 	vendor/bin/simple-phpunit -v
 
-cover-text:
-	vendor/bin/simple-phpunit -v --coverage-text
+cover-text: clean
+	php7.4 vendor/bin/simple-phpunit -v --coverage-text
 
 cover: clean
-	vendor/bin/simple-phpunit --coverage-html var/test-coverage
+	php7.4 vendor/bin/simple-phpunit --coverage-html var/test-coverage

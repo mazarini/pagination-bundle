@@ -14,4 +14,5 @@ return [
     Mazarini\PaginationBundle\MazariniPaginationBundle::class => ['all' => true],
     Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle::class => ['all' => true],
     Mazarini\BootstrapBundle\MazariniBootstrapBundle::class => ['all' => true],
+    DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => ['test' => true],
 ];

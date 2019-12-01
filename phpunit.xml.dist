@@ -12,8 +12,8 @@
         <server name="APP_ENV" value="test" force="true" />
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
-        <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
-        <env name="SYMFONY_PHPUNIT_DIR" value="var/cache/phpunit" />
+        <server name="SYMFONY_PHPUNIT_VERSION" value="8.3" />
+        <server name="SYMFONY_PHPUNIT_DIR" value="var/cache/phpunit" />
     </php>
 
     <testsuites>
@@ -32,4 +32,9 @@
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
     </listeners>
+
+    <extensions>
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+    </extensions>
+
 </phpunit>
