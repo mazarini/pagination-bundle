@@ -22,25 +22,23 @@ namespace App\DataFixtures;
 use App\Entity\Example;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Mazarini\ToolsBundle\Entity\EntityInterface;
 
 class ExampleFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 1; $i < 90; ++$i) {
-            $example = new Example();
-            $example
-                ->setCol1('row_'.$i.'_'.'c_1')
-                ->setCol2('row_'.$i.'_'.'c_2')
-                ->setCol3('row_'.$i.'_'.'c_3')
-                ->setCol4('row_'.$i.'_'.'c_4')
-                ->setCol5('row_'.$i.'_'.'c_5')
-                ->setCol6('row_'.$i.'_'.'c_6')
-                ->setCol7('row_'.$i.'_'.'c_7')
-                ->setCol8('row_'.$i.'_'.'c_8')
-                ->setCol9('row_'.$i.'_'.'c_9');
-            $manager->persist($example);
-            $manager->flush();
+        for ($i = 1; $i <= 55; ++$i) {
+            $manager->persist($this->getEntity($i));
         }
+
+        $manager->flush();
+    }
+
+    protected function getEntity(int $i): EntityInterface
+    {
+        $entity = new Example();
+
+        return $entity->setCol1(sprintf('row%02d / col1', $i))->setCol2(sprintf('row%02d / col2', $i));
     }
 }

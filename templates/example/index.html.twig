@@ -1,60 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends '@MazariniPagination/tool/_list.html.twig' %}
 
 {% block title %}
-    Example index
+	Example index
 {% endblock %}
 
-{% block content %}
+{% block page_title %}
+	<th>Id</th>
+	<th>Col1</th>
+	<th>Col2</th>
+	<th>actions</th>
+{% endblock page_title %}
 
-    <h1>Example index</h1>
+{% block page_row %}
+	<td>{{ entity.id }}</td>
+	<td>{{ entity.col1 }}</td>
+	<td>{{ entity.col2 }}</td>
+{% endblock page_row %}
 
-    {% embed '@MazariniPagination/list.html.twig' with {'Entities': examples.entities, 'pagination': examples} only %}
+{% block page_not_found %}
+	{% include '@MazariniPagination/tool/nothing.html.twig'with {'span': 4} %}
+{% endblock page_not_found %}
 
-        {% block header_data %}
-            <th>Id</th>
-            <th>Col1</th>
-            <th>Col2</th>
-            <th>Col3</th>
-            <th>Col4</th>
-            <th>Col5</th>
-            <th>Col6</th>
-            <th>Col7</th>
-            <th>Col8</th>
-            <th>Col9</th>
-        {% endblock header_data %}
-
-        {% block row_data %}
-            <td>{{ Entity.id }}</td>
-            <td>{{ Entity.col1 }}</td>
-            <td>{{ Entity.col2 }}</td>
-            <td>{{ Entity.col3 }}</td>
-            <td>{{ Entity.col4 }}</td>
-            <td>{{ Entity.col5 }}</td>
-            <td>{{ Entity.col6 }}</td>
-            <td>{{ Entity.col7 }}</td>
-            <td>{{ Entity.col8 }}</td>
-            <td>{{ Entity.col9 }}</td>
-        {% endblock row_data %}
-
-        {% block button_view %}
-            view
-        {% endblock button_view %}
-
-        {% block button_edit %}
-            edit
-        {% endblock button_edit %}
-
-        {% block button_create %}
-            create
-        {% endblock button_create %}
-
-        {% block footer_data %}
-            <th colspan="10"></th>
-        {% endblock footer_data %}
-
-        {% block number %}
-            {% include '@MazariniBootstrap/pagination/item.html.twig' with {'href': pagination.currentPage == number ? '' : '#' ~ number, 'number': number} only %}
-        {% endblock number %}
-
-    {% endembed %}
-{% endblock %}
+{% block page_new %}
+	{% include '@MazariniPagination/tool/new.html.twig' with {'span': 3} %}
+{% endblock page_new %}

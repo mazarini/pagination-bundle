@@ -26,22 +26,30 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ExampleType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    /**
+     * buildForm.
+     *
+     * @param array<string,mixed> $options
+     */
+
+    /**
+     * buildForm.
+     *
+     * @param FormBuilderInterface<int,string|FormBuilderInterface> $builder
+     * @param array<string,mixed>                                   $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('col1')
             ->add('col2')
-            ->add('col3')
-            ->add('col4')
-            ->add('col5')
-            ->add('col6')
-            ->add('col7')
-            ->add('col8')
-            ->add('col9')
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    /**
+     * configureOptions.
+     */
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Example::class,

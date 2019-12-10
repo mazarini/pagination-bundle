@@ -19,12 +19,13 @@ composer:
 	composer -vv validate --strict
 
 twig:
-	bin/console lint:twig templates/ lib/Resources/views/
+	bin/console lint:twig templates/ lib/Resources/config
 	twigcs templates -vv
-	twigcs lib/Resources/views -vv
+	twigcs lib/Resources/config -vv
+ 
 
 yaml:
-	bin/console lint:yaml lib/Resources/config config phpstan.neon.dist .travis.yml
+	bin/console lint:yaml config lib/Resources/config phpstan.neon.dist .travis.yml
 
 cs:
 	php-cs-fixer fix
@@ -81,7 +82,7 @@ stable:
 ############################################
 
 start:
-	symfony server:start
+	symfony server:start --no-tls
 
 stop:
 	symfony server:stop
@@ -104,8 +105,9 @@ dbinit:
 
 dbreset: dbdrop dbinit
 
-fixtures:
+fixtures: dbreset
 	bin/console doctrine:fixtures:load
+	cp var/data/sqlite.db var/data/origine.db
 
 ############################################
 #                T E S T S                 #
@@ -116,12 +118,14 @@ fixtures:
 clean:
 	bin/console cache:clear --env=test
 	bin/console cache:clear --env=dev
+	cp var/data/origine.db var/data/sqlite.db
 
 test:
+	cp var/data/origine.db var/data/sqlite.db
 	vendor/bin/simple-phpunit -v
 
 cover-text: clean
-	php7.4 vendor/bin/simple-phpunit -v --coverage-text
+	vendor/bin/simple-phpunit -v --coverage-text
 
 cover: clean
-	php7.4 vendor/bin/simple-phpunit --coverage-html var/test-coverage
+	vendor/bin/simple-phpunit --coverage-html var/test-coverage

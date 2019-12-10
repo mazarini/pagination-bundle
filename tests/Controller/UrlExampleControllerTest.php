@@ -19,30 +19,48 @@
 
 namespace App\Tests\Controller;
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
 
-class UrlControllerTest extends WebTestCase
+class UrlExampleControllerTest extends WebTestCase
 {
     /**
-     * @dataProvider getPublicUrls
+     * @var KernelBrowser;
      */
-    public function testPublicUrls(string $url)
+    protected $client;
+
+    public function setUp(): void
     {
-        $client = static::createClient();
-        $client->request('GET', $url);
+        $this->client = static::createClient();
+    }
+
+    /**
+     * @dataProvider getUrls
+     */
+    public function testUrls(string $url, string $method = 'GET', int $response = 200): void
+    {
+        $this->client->request($method, $url);
 
         $this->assertSame(
-            Response::HTTP_OK,
-            $client->getResponse()->getStatusCode(),
+            $response,
+            $this->client->getResponse()->getStatusCode(),
             sprintf('The %s public URL loads correctly.', $url)
         );
     }
 
-    public function getPublicUrls()
+    /**
+     * getUrls.
+     *
+     * @return \Traversable<array>
+     */
+    public function getUrls(): \Traversable
     {
-        yield ['/'];
-        yield ['/page-1.html'];
-        yield ['/page-2.html'];
+        yield ['/example', 'GET', 301];
+        yield ['/example/', 'GET', 302];
+        yield ['/example/page-0.html', 'GET', 404];
+        yield ['/example/page-1.html'];
+        yield ['/example/page-6.html'];
+        yield ['/example/page-7.html'];
+        yield ['/example/show-1.html', 'GET', 200];
     }
 }

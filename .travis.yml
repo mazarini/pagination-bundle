@@ -10,8 +10,8 @@ cache:
 env:
   global:
     - SYMFONY_PHPUNIT_DIR=./var/cache/phpunit
-    - SYMFONY_DEPRECATIONS_HELPER=29
-    - SYMFONY_PHPUNIT_COMPOSER_OPTION=
+    - SYMFONY_DEPRECATIONS_HELPER=0
+    - OPTION=
     - INSTALL="update"
     - SYNFONY=
     - STABILITY=
@@ -20,48 +20,47 @@ env:
 jobs:
   fast_finish: true
   include:
-#   CONTROLE
+#   Controle
     - php: 7.2
-      env: CONTROL="YES"
-           INSTALL="install"
+      env: INSTALL="install"
+           CONTROL="YES"
 #   PHP version
     - php: 7.3
       env: INSTALL="install"
-    - php: 7.4snapshot
+    - php: 7.4
       env: INSTALL="install"
     - php: nightly
-      env: SYMFONY_PHPUNIT_COMPOSER_OPTION="--ignore-platform-reqs"
+      env: OPTION="nightly"
            INSTALL="install"
-#   Symfony stable version
+#   symfony version
     - php: 7.2
-      env: SYMFONY="4.4.*"
+      env: symfony="4.4.*"
     - php: 7.2
-      env: SYMFONY="5.0.*"
-           INSTALL="install"
-#   Symfony dev version
+      env: symfony="5.0.*"
+#   symfony dev version
     - php: 7.2
-      env: SYMFONY="4.4.*"
+      env: symfony="4.4.*"
            STABILITY="dev"
     - php: 7.2
-      env: SYMFONY="5.0.*"
+      env: symfony="5.0.*"
            STABILITY="dev"
     - php: 7.2
-      env: SYMFONY="5.1.*"
+      env: symfony="5.1.*"
            STABILITY="dev"
   allow_failures:
 #   PHP version dev version
     - php: nightly
-      env: SYMFONY_PHPUNIT_COMPOSER_OPTION="--ignore-platform-reqs"
+      env: OPTION="nightly"
            INSTALL="install"
-#   Symfony dev version
+#   symfony dev version
     - php: 7.2
-      env: SYMFONY="4.4.*"
+      env: symfony="4.4.*"
            STABILITY="dev"
     - php: 7.2
-      env: SYMFONY="5.0.*"
+      env: symfony="5.0.*"
            STABILITY="dev"
     - php: 7.2
-      env: SYMFONY="5.1.*"
+      env: symfony="5.1.*"
            STABILITY="dev"
 
 before_install:
@@ -72,19 +71,19 @@ before_install:
   - '[[ "$STABILITY" == "" ]] || composer config minimum-stability $STABILITY'
 
 install:
-  - '[[ "$CONTROL" == "" ]] || composer global require friendsofphp/php-cs-fixer symfony/flex sensiolabs/security-checker friendsoftwig/twigcs phpstan/phpstan-symfony'
-  - composer $INSTALL $SYMFONY_PHPUNIT_COMPOSER_OPTION
-  - '[[ "$SYMFONY_PHPUNIT_COMPOSER_OPTION" == "" ]] || cp var/data/simple-phpunit.php vendor/symfony/phpunit-bridge/bin/simple-phpunit.php'
+  - '[[ "$OPTION" == "" ]] || phpenv global 7.2 && php -v'
+  - '[[ "$CONTROL" == "" ]] || composer global require friendsofphp/php-cs-fixer sensiolabs/security-checker friendsoftwig/twigcs phpstan/phpstan-symfony'
+  - composer $INSTALL
   - ./bin/phpunit install
-
+  - '[[ "$OPTION" == "" ]] || phpenv global $OPTION && php -v'
+  - cp var/data/origine.db var/data/sqlite.db
 script:
-  - '[[ "$CONTROL" == "YES" ]] || ./bin/phpunit'
+  - '[[ "$CONTROL" == "YES" ]] || ./bin/phpunit -v'
   - '[[ "$CONTROL" == "" ]] || ./bin/phpunit -v --coverage-text'
   - '[[ "$CONTROL" == "" ]] || security-checker security:check'
   - '[[ "$CONTROL" == "" ]] || php-cs-fixer fix'
   - '[[ "$CONTROL" == "" ]] || twigcs templates -vv'
-  - '[[ "$CONTROL" == "" ]] || twigcs lib/Resources/views -vv'
-  - '[[ "$CONTROL" == "" ]] || bin/console lint:twig templates/ lib/Resources/views'
-  - '[[ "$CONTROL" == "" ]] || phpstan analyse lib src tests --level max'
-  - '[[ "$CONTROL" == "" ]] || bin/console lint:yaml config lib/Resources/config phpstan.neon.dist .travis.yml'
+  - '[[ "$CONTROL" == "" ]] || bin/console lint:twig templates/'
+  - '[[ "$CONTROL" == "" ]] || phpstan analyse src tests --level max'
+  - '[[ "$CONTROL" == "" ]] || bin/console lint:yaml config phpstan.neon.dist .travis.yml'
   - '[[ "$CONTROL" == "" ]] || composer -vv validate --strict'

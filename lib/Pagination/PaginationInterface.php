@@ -19,41 +19,32 @@
 
 namespace Mazarini\PaginationBundle\Pagination;
 
-trait PagesTrait
+use Mazarini\ToolsBundle\Entity\EntityInterface;
+
+interface PaginationInterface
 {
-    protected $currentPage = null;
-    protected $lastPage = null;
+    /**
+     * getEntities.
+     *
+     * @return \ArrayIterator<int,EntityInterface>
+     */
+    public function getEntities(): \ArrayIterator;
 
-    abstract public function count();
+    public function hasToPaginate(): bool;
 
-    abstract public function getPageSize(): int;
+    public function hasPreviousPage(): bool;
 
-    public function getCurrentPage(): int
-    {
-        return $this->currentPage;
-    }
+    public function getFirstPage(): int;
 
-    public function getLastPage(): int
-    {
-        if (null === $this->lastPage) {
-            $this->lastPage = ceil($this->count() / $this->getPageSize());
-        }
+    public function getPreviousPage(): int;
 
-        return $this->lastPage;
-    }
+    public function getCurrentPage(): int;
 
-    public function hasPreviousPage(): bool
-    {
-        return 1 < $this->currentPage;
-    }
+    public function hasNextPage(): bool;
 
-    public function hasNextPage(): bool
-    {
-        return $this->currentPage < $this->getLastPage();
-    }
+    public function getNextPage(): int;
 
-    public function hasToPaginate(): bool
-    {
-        return $this->lastPage > 1;
-    }
+    public function getLastPage(): int;
+
+    public function count(): int;
 }

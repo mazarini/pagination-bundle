@@ -21,33 +21,44 @@ namespace App\Controller;
 
 use App\Entity\Example;
 use App\Repository\ExampleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Mazarini\PaginationBundle\Controller\AbstractPaginationController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @Route("/")
+ * @Route("/example")
  */
-class ExampleController extends AbstractController
+class ExampleController extends AbstractPaginationController
 {
-    /**
-     * @Route("/", methods={"GET"})
-     * @Route("/page-{page}.html", name="example_page", methods={"GET"})
-     */
-    public function index(ExampleRepository $exampleRepository, int $page = 1): Response
+    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $router)
     {
-        $examples = $exampleRepository->findPage($page);
-        if ($examples->hasPreviousPage()) {
-            $examples->setFirst($this->generateUrl('example_page', ['page' => 1]))
-                     ->setPrev($this->generateUrl('example_page', ['page' => $examples->getCurrentPage() - 1]));
-        }
-        if ($examples->hasNextPage()) {
-            $examples->setNext($this->generateUrl('example_page', ['page' => $examples->getCurrentPage() + 1]))
-                     ->setLast($this->generateUrl('example_page', ['page' => $examples->getLastPage()]));
-        }
+        parent::__construct($requestStack, $router, 'example');
+        $this->twigFolder = 'example/';
+    }
 
-        return $this->render('example/index.html.twig', [
-            'examples' => $examples,
-        ]);
+    /**
+     * @Route("/", name="example_index", methods={"GET"})
+     */
+    public function index(): Response
+    {
+        return $this->indexAction();
+    }
+
+    /**
+     * @Route("/page-{page<[1-9]\d*>}.html", name="example_page", methods={"GET"})
+     */
+    public function page(ExampleRepository $ExampleRepository, int $page = 1): Response
+    {
+        return $this->PageAction($ExampleRepository, $page);
+    }
+
+    /**
+     * @Route("/show-{id<[1-9]\d*>}.html", name="example_show", methods={"GET"})
+     */
+    public function show(Example $entity): Response
+    {
+        return $this->showAction($entity);
     }
 }
