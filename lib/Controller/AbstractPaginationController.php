@@ -20,7 +20,8 @@
 namespace Mazarini\PaginationBundle\Controller;
 
 use Mazarini\PaginationBundle\Repository\AbstractRepository;
-use Mazarini\PaginationBundle\Tool\Data;
+use Mazarini\ToolsBundle\Controller\AbstractController;
+use Mazarini\ToolsBundle\Data\Data;
 use Mazarini\ToolsBundle\Entity\EntityInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,11 +49,11 @@ abstract class AbstractPaginationController extends AbstractController
             }
             if (($last = $pagination->getLastPage()) <= 20) {
                 for ($i = 1; $i <= $last; ++$i) {
-                    $data->addLink('page-'.$i, '_page', ['page' => $i]);
+                    $data->addLink('page-'.$i, '_page', ['page' => $i], (string) $i);
                 }
             }
         } else {
-            $data->addLink('index', '_page', ['page' => 1]);
+            $data->addLink('index', '_page', ['page' => 1], 'List');
         }
 
         return $this;
@@ -70,7 +71,7 @@ abstract class AbstractPaginationController extends AbstractController
                 $id = $entity->getId();
                 $parameters = ['id' => $id];
                 foreach ($actions as $action) {
-                    $data->addLink($action.'-'.$id, $action, $parameters);
+                    $data->addLink($action.'-'.$id, '_'.$action, $parameters, ucfirst($action));
                 }
             }
         }
@@ -80,7 +81,7 @@ abstract class AbstractPaginationController extends AbstractController
 
     protected function initUrl(Data $data): AbstractController
     {
-        $this->listUrl($data, ['_show']);
+        $this->listUrl($data, ['show']);
         $this->paginationUrl($data);
 
         return $this;

@@ -23,7 +23,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\Pagination\CountWalker;
 use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
-use Mazarini\PaginationBundle\Pagination\Pagination;
+use Mazarini\ToolsBundle\Pagination\Pagination;
 
 abstract class AbstractRepository extends ServiceEntityRepository
 {

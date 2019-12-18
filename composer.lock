@@ -1197,12 +1197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/bootstrap-bundle.git",
-                "reference": "ae93801baa9afbeb9806ac3931fb6b2287c517ac"
+                "reference": "8145e5fedb45eb14409f44397d2ff9078109993f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/bootstrap-bundle/zipball/ae93801baa9afbeb9806ac3931fb6b2287c517ac",
-                "reference": "ae93801baa9afbeb9806ac3931fb6b2287c517ac",
+                "url": "https://api.github.com/repos/mazarini/bootstrap-bundle/zipball/8145e5fedb45eb14409f44397d2ff9078109993f",
+                "reference": "8145e5fedb45eb14409f44397d2ff9078109993f",
                 "shasum": ""
             },
             "require": {
@@ -1254,7 +1254,7 @@
             "keywords": [
                 "symfony"
             ],
-            "time": "2019-12-17T21:53:37+00:00"
+            "time": "2019-12-18T16:56:41+00:00"
         },
         {
             "name": "mazarini/tools-bundle",
