@@ -19,8 +19,8 @@
 
 namespace App\Controller;
 
-use App\Entity\EmptyRow;
-use App\Repository\EmptyRowRepository;
+use App\Entity\Zero;
+use App\Repository\ZeroRepository;
 use Mazarini\PaginationBundle\Controller\AbstractPaginationController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,18 +28,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @Route("/empty")
+ * @Route("/zero")
  */
-class EmptyRowController extends AbstractPaginationController
+class ZeroController extends AbstractPaginationController
 {
     public function __construct(RequestStack $requestStack, UrlGeneratorInterface $router)
     {
-        parent::__construct($requestStack, $router, 'empty_row');
-        $this->twigFolder = 'emptyRow/';
+        parent::__construct($requestStack, $router, 'zero');
+        $this->twigFolder = 'zero/';
     }
 
     /**
-     * @Route("/", name="empty_row_index", methods={"GET"})
+     * @Route("/", name="zero_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -47,17 +47,17 @@ class EmptyRowController extends AbstractPaginationController
     }
 
     /**
-     * @Route("/page-{page<[1-9]\d*>}.html", name="empty_row_page", methods={"GET"})
+     * @Route("/page-{page<[1-9]\d*>}.html", name="zero_page", methods={"GET"})
      */
-    public function page(EmptyRowRepository $EmptyRowRepository, int $page = 1): Response
+    public function page(ZeroRepository $zeroRepository, int $page = 1): Response
     {
-        return $this->PageAction($EmptyRowRepository, $page);
+        return $this->PageAction($zeroRepository, $page);
     }
 
     /**
-     * @Route("/show-{id<[1-9]\d*>}.html", name="empty_row_show", methods={"GET"})
+     * @Route("/show-{id<[1-9]\d*>}.html", name="zero_show", methods={"GET"})
      */
-    public function show(EmptyRow $entity): Response
+    public function show(Zero $entity): Response
     {
         return $this->showAction($entity);
     }

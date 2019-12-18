@@ -23,9 +23,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Mazarini\ToolsBundle\Entity\EntityInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ExampleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ZeroRepository")
  */
-class Example implements EntityInterface
+class Zero implements EntityInterface
 {
     /**
      * @ORM\Id()
@@ -41,14 +41,14 @@ class Example implements EntityInterface
      *
      * @var string
      */
-    private $col1 = '';
+    private $Col3 = '';
 
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
      */
-    private $col2 = '';
+    private $Col4 = '';
 
     public function isNew(): bool
     {
@@ -60,26 +60,26 @@ class Example implements EntityInterface
         return $this->id;
     }
 
-    public function getCol1(): string
+    public function getCol3(): string
     {
-        return $this->col1;
+        return $this->Col3;
     }
 
-    public function setCol1(string $col1): self
+    public function setCol3(string $Col3): self
     {
-        $this->col1 = $col1;
+        $this->Col3 = $Col3;
 
         return $this;
     }
 
-    public function getCol2(): string
+    public function getCol4(): string
     {
-        return $this->col2;
+        return $this->Col4;
     }
 
-    public function setCol2(string $col2): self
+    public function setCol4(string $Col4): self
     {
-        $this->col2 = $col2;
+        $this->Col4 = $Col4;
 
         return $this;
     }

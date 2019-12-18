@@ -38,7 +38,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class User implements UserInterface, \Serializable, EntityInterface
+class User implements \Serializable, EntityInterface // , UserInterface
 {
     use EntityTrait;
 
