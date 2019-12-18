@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e5a5a845e7bb2a49a47283ab83a1246",
+    "content-hash": "cdbbea6e7978ce5e207a891cb3e7dc32",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -985,16 +985,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "1.2.0",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "43526ae63312942e5316100bb3ed589ba1aba491"
+                "reference": "99b196bbd4715a94fa100fac664a351ffa46d6a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/43526ae63312942e5316100bb3ed589ba1aba491",
-                "reference": "43526ae63312942e5316100bb3ed589ba1aba491",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/99b196bbd4715a94fa100fac664a351ffa46d6a5",
+                "reference": "99b196bbd4715a94fa100fac664a351ffa46d6a5",
                 "shasum": ""
             },
             "require": {
@@ -1009,19 +1009,20 @@
                 "doctrine/common": "<2.10@dev"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^5.0",
-                "phpstan/phpstan": "^0.8",
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11",
                 "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Common\\": "lib/Doctrine/Common"
+                    "Doctrine\\Common\\": "lib/Doctrine/Common",
+                    "Doctrine\\Persistence\\": "lib/Doctrine/Persistence"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1063,7 +1064,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2019-04-23T12:39:21+00:00"
+            "time": "2019-12-13T10:43:02+00:00"
         },
         {
             "name": "doctrine/reflection",
@@ -1192,33 +1193,33 @@
         },
         {
             "name": "mazarini/bootstrap-bundle",
-            "version": "v0.9.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/bootstrap-bundle.git",
-                "reference": "3236b2b1a3bcecc18733200c9f7cc30df2795673"
+                "reference": "ae93801baa9afbeb9806ac3931fb6b2287c517ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/bootstrap-bundle/zipball/3236b2b1a3bcecc18733200c9f7cc30df2795673",
-                "reference": "3236b2b1a3bcecc18733200c9f7cc30df2795673",
+                "url": "https://api.github.com/repos/mazarini/bootstrap-bundle/zipball/ae93801baa9afbeb9806ac3931fb6b2287c517ac",
+                "reference": "ae93801baa9afbeb9806ac3931fb6b2287c517ac",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-iconv": "*",
                 "ext-mbstring": "*",
-                "mazarini/tools-bundle": "^0.9",
+                "mazarini/tools-bundle": "^0.9|^1.0@dev",
                 "php": "^7.2|^8.0",
                 "symfony/flex": "^1.5",
-                "symfony/twig-bundle": "^4.3|^5.0|^5.1"
+                "symfony/twig-bundle": "^4.4|^5.0"
             },
             "conflict": {
                 "symfony/symfony": "*"
             },
             "require-dev": {
                 "mazarini/package": "^1.0",
-                "mazarini/test-bundle": "^0.9",
+                "mazarini/test-bundle": "^0.9|^1.0@dev",
                 "symfony/debug-pack": "^1.0",
                 "symfony/maker-bundle": "^1.14",
                 "symfony/test-pack": "^1.0"
@@ -1253,20 +1254,20 @@
             "keywords": [
                 "symfony"
             ],
-            "time": "2019-12-01T14:12:48+00:00"
+            "time": "2019-12-17T21:53:37+00:00"
         },
         {
             "name": "mazarini/tools-bundle",
-            "version": "v0.9.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/tools-bundle.git",
-                "reference": "cd5c76c8bdcd64fc8404c56bd797275e4c5f7f13"
+                "reference": "090b92e402cbef71e5f246e6e2030b74d19115c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/cd5c76c8bdcd64fc8404c56bd797275e4c5f7f13",
-                "reference": "cd5c76c8bdcd64fc8404c56bd797275e4c5f7f13",
+                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/090b92e402cbef71e5f246e6e2030b74d19115c4",
+                "reference": "090b92e402cbef71e5f246e6e2030b74d19115c4",
                 "shasum": ""
             },
             "require": {
@@ -1282,7 +1283,7 @@
             },
             "require-dev": {
                 "mazarini/package": "^1.0",
-                "mazarini/test-bundle": "^0.9",
+                "mazarini/test-bundle": "^0.9|^1.0dev",
                 "symfony/debug-pack": "^1.0",
                 "symfony/maker-bundle": "^1.14",
                 "symfony/test-pack": "^1.0"
@@ -1319,7 +1320,7 @@
                 "symfony",
                 "toolset"
             ],
-            "time": "2019-12-01T11:25:31+00:00"
+            "time": "2019-12-17T22:36:41+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -1631,16 +1632,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v5.5.1",
+            "version": "v5.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "dfc2c4df9f7d465a65c770e9feb578fe071636f7"
+                "reference": "92acfcc610e2180c52790ec3ff2e893f67e76b32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/dfc2c4df9f7d465a65c770e9feb578fe071636f7",
-                "reference": "dfc2c4df9f7d465a65c770e9feb578fe071636f7",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/92acfcc610e2180c52790ec3ff2e893f67e76b32",
+                "reference": "92acfcc610e2180c52790ec3ff2e893f67e76b32",
                 "shasum": ""
             },
             "require": {
@@ -1705,7 +1706,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2019-10-16T18:54:45+00:00"
+            "time": "2019-12-12T16:21:49+00:00"
         },
         {
             "name": "symfony/cache",
@@ -2494,16 +2495,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.5.3",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "59b42aa1d3385a21683601c15e63eb35d2ebe8a4"
+                "reference": "952f45d1c5077e658cb16a61d11603bee873f968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/59b42aa1d3385a21683601c15e63eb35d2ebe8a4",
-                "reference": "59b42aa1d3385a21683601c15e63eb35d2ebe8a4",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/952f45d1c5077e658cb16a61d11603bee873f968",
+                "reference": "952f45d1c5077e658cb16a61d11603bee873f968",
                 "shasum": ""
             },
             "require": {
@@ -2539,7 +2540,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-12-01T15:56:52+00:00"
+            "time": "2019-12-13T18:05:11+00:00"
         },
         {
             "name": "symfony/form",
@@ -4789,24 +4790,27 @@
         },
         {
             "name": "zendframework/zend-code",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-code.git",
-                "reference": "46feaeecea14161734b56c1ace74f28cb329f194"
+                "reference": "268040548f92c2bfcba164421c1add2ba43abaaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/46feaeecea14161734b56c1ace74f28cb329f194",
-                "reference": "46feaeecea14161734b56c1ace74f28cb329f194",
+                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/268040548f92c2bfcba164421c1add2ba43abaaa",
+                "reference": "268040548f92c2bfcba164421c1add2ba43abaaa",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
                 "zendframework/zend-eventmanager": "^2.6 || ^3.0"
             },
+            "conflict": {
+                "phpspec/prophecy": "<1.9.0"
+            },
             "require-dev": {
-                "doctrine/annotations": "^1.0",
+                "doctrine/annotations": "^1.7",
                 "ext-phar": "*",
                 "phpunit/phpunit": "^7.5.16 || ^8.4",
                 "zendframework/zend-coding-standard": "^1.0",
@@ -4820,7 +4824,8 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.4.x-dev",
-                    "dev-develop": "3.5.x-dev"
+                    "dev-develop": "3.5.x-dev",
+                    "dev-dev-4.0": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -4838,7 +4843,7 @@
                 "code",
                 "zf"
             ],
-            "time": "2019-10-05T23:18:22+00:00"
+            "time": "2019-12-10T19:21:15+00:00"
         },
         {
             "name": "zendframework/zend-eventmanager",
@@ -5200,12 +5205,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/test-bundle.git",
-                "reference": "1e22e400d0b19d50031dd815c7e56f2441ba3f9b"
+                "reference": "a97b9ba41b4190949c14c522b8910c221f4b7946"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/1e22e400d0b19d50031dd815c7e56f2441ba3f9b",
-                "reference": "1e22e400d0b19d50031dd815c7e56f2441ba3f9b",
+                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/a97b9ba41b4190949c14c522b8910c221f4b7946",
+                "reference": "a97b9ba41b4190949c14c522b8910c221f4b7946",
                 "shasum": ""
             },
             "require": {
@@ -5228,7 +5233,8 @@
             "type": "symfony-bundle",
             "extra": {
                 "symfony": {
-                    "allow-contrib": true
+                    "allow-contrib": true,
+                    "require": "5.0.*"
                 },
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
@@ -5256,7 +5262,7 @@
                 "symfony",
                 "test"
             ],
-            "time": "2019-12-05T14:01:47+00:00"
+            "time": "2019-12-18T08:20:06+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6047,6 +6053,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mazarini/bootstrap-bundle": 20,
+        "mazarini/tools-bundle": 20,
         "mazarini/test-bundle": 20
     },
     "prefer-stable": false,

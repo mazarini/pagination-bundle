@@ -10,7 +10,7 @@ cache:
 env:
   global:
     - SYMFONY_PHPUNIT_DIR=./var/cache/phpunit
-    - SYMFONY_DEPRECATIONS_HELPER=0
+    - SYMFONY_DEPRECATIONS_HELPER=10
     - OPTION=
     - INSTALL="update"
     - SYNFONY=
