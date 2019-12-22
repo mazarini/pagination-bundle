@@ -49,7 +49,7 @@ class UserController extends AbstractPaginationController
     /**
      * @Route("/page-{page<[1-9]\d*>}.html", name="user_page", methods={"GET"})
      */
-    public function page(UserRepository $UserRepository, int $page = 1): Response
+    public function page(UserRepository $UserRepository, int $page): Response
     {
         return $this->PageAction($UserRepository, $page);
     }

@@ -49,7 +49,7 @@ class TenController extends AbstractPaginationController
     /**
      * @Route("/page-{page<[1-9]\d*>}.html", name="ten_page", methods={"GET"})
      */
-    public function page(TenRepository $TenRepository, int $page = 1): Response
+    public function page(TenRepository $TenRepository, int $page): Response
     {
         return $this->PageAction($TenRepository, $page);
     }

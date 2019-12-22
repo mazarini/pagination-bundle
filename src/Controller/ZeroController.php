@@ -49,7 +49,7 @@ class ZeroController extends AbstractPaginationController
     /**
      * @Route("/page-{page<[1-9]\d*>}.html", name="zero_page", methods={"GET"})
      */
-    public function page(ZeroRepository $zeroRepository, int $page = 1): Response
+    public function page(ZeroRepository $zeroRepository, int $page): Response
     {
         return $this->PageAction($zeroRepository, $page);
     }

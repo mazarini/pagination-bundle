@@ -46,7 +46,10 @@ abstract class AbstractRepository extends ServiceEntityRepository
         if (0 === $totalCount) {
             return new Pagination(new \ArrayIterator([]), $currentPage, $totalCount, $pageSize);
         }
-        $currentPage = Pagination::CURRENT_PAGE($currentPage, $pageSize, $totalCount);
+        $current = Pagination::CURRENT_PAGE($currentPage, $pageSize, $totalCount);
+        if ($current !== $currentPage) {
+            return new Pagination(new \ArrayIterator([]), $current, $totalCount, $pageSize);
+        }
         $query->setFirstResult(($currentPage - 1) * $pageSize);
         $result = $paginator->getIterator();
 

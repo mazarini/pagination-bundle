@@ -38,6 +38,7 @@ abstract class AbstractPaginationController extends AbstractController
     {
         if ($data->isSetEntities()) {
             $pagination = $data->getPagination();
+            $last = $pagination->getLastPage();
             if ($pagination->hasPreviousPage()) {
                 $data->addLink('first', '_page', ['page' => 1]);
                 $data->addLink('previous', '_page', ['page' => $pagination->getCurrentPage() - 1]);
@@ -47,10 +48,8 @@ abstract class AbstractPaginationController extends AbstractController
                 $data->addLink('Next', '_page', ['page' => $pagination->getCurrentPage() + 1]);
                 $data->addLink('Last', '_page', ['page' => $last]);
             }
-            if (($last = $pagination->getLastPage()) <= 20) {
-                for ($i = 1; $i <= $last; ++$i) {
-                    $data->addLink('page-'.$i, '_page', ['page' => $i], (string) $i);
-                }
+            for ($i = 1; $i <= $last; ++$i) {
+                $data->addLink('page-'.$i, '_page', ['page' => $i], (string) $i);
             }
         } else {
             $data->addLink('index', '_page', ['page' => 1], 'List');
@@ -92,13 +91,18 @@ abstract class AbstractPaginationController extends AbstractController
         return $this->redirectToRoute($this->data->getRoute('_page'), ['page' => 1]);
     }
 
-    protected function PageAction(AbstractRepository $EmptyRowRepository, int $page = 1): Response
+    protected function PageAction(AbstractRepository $EmptyRowRepository, int $page): Response
     {
         $this->data->setPagination($EmptyRowRepository->getPage($page));
-        $current = $this->data->getPagination()->getCurrentPage();
-        $this->data->getLinks()->setCurrentUrl($this->generateUrl($this->data->getroute('_page'), ['page' => $current]));
 
-        return $this->dataRender('index.html.twig');
+        $currentPage = $this->data->getPagination()->getCurrentPage();
+        $currentUrl = $this->generateUrl($this->data->getroute('_page'), ['page' => $currentPage]);
+
+        if ($page === $currentPage) {
+            return $this->dataRender('index.html.twig');
+        }
+
+        return $this->redirectToRoute($this->data->getRoute('_page'), ['page' => $currentPage]);
     }
 
     protected function showAction(EntityInterface $entity): Response

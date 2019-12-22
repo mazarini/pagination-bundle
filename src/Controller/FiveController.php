@@ -49,7 +49,7 @@ class FiveController extends AbstractPaginationController
     /**
      * @Route("/page-{page<[1-9]\d*>}.html", name="five_page", methods={"GET"})
      */
-    public function page(FiveRepository $FiveRepository, int $page = 1): Response
+    public function page(FiveRepository $FiveRepository, int $page): Response
     {
         return $this->PageAction($FiveRepository, $page);
     }
