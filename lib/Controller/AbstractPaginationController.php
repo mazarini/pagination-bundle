@@ -40,19 +40,28 @@ abstract class AbstractPaginationController extends AbstractController
             $pagination = $data->getPagination();
             $last = $pagination->getLastPage();
             if ($pagination->hasPreviousPage()) {
-                $data->addLink('first', '_page', ['page' => 1]);
-                $data->addLink('previous', '_page', ['page' => $pagination->getCurrentPage() - 1]);
+                $navUrl['first'] = $data->generateUrl('_page', ['page' => 1]);
+                $navUrl['previous'] = $data->generateUrl('_page', ['page' => $pagination->getCurrentPage() - 1]);
+            } else {
+                $navUrl['first'] = '#';
+                $navUrl['previous'] = '#';
             }
             if ($pagination->hasNextPage()) {
-                $last = $pagination->getLastPage();
-                $data->addLink('Next', '_page', ['page' => $pagination->getCurrentPage() + 1]);
-                $data->addLink('Last', '_page', ['page' => $last]);
+                $navUrl['next'] = $data->generateUrl('_page', ['page' => $pagination->getCurrentPage() + 1]);
+                $navUrl['last'] = $data->generateUrl('_page', ['page' => $last]);
+            } else {
+                $navUrl['next'] = '#';
+                $navUrl['last'] = '#';
             }
+            $data->addLink('first', $navUrl['first'], '1');
+            $data->addLink('previous', $navUrl['previous']);
+            $data->addLink('next', $navUrl['next']);
+            $data->addLink('last', $navUrl['last'], (string) $last);
             for ($i = 1; $i <= $last; ++$i) {
-                $data->addLink('page-'.$i, '_page', ['page' => $i], (string) $i);
+                $data->addLink('page-'.$i, $data->generateUrl('_page', ['page' => $i]), (string) $i);
             }
         } else {
-            $data->addLink('index', '_page', ['page' => 1], 'List');
+            $data->addLink('index', $data->generateUrl('_page', ['page' => 1]), 'List');
         }
 
         return $this;
@@ -70,10 +79,28 @@ abstract class AbstractPaginationController extends AbstractController
                 $id = $entity->getId();
                 $parameters = ['id' => $id];
                 foreach ($actions as $action) {
-                    $data->addLink($action.'-'.$id, '_'.$action, $parameters, ucfirst($action));
+                    $data->addLink($action.'-'.$id, $data->generateUrl('_'.$action, $parameters), $action);
                 }
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * listUrl.
+     *
+     * @param array<int,string> $actions
+     */
+    protected function EntityUrl(Data $data, array $actions): AbstractController
+    {
+        if ($data->isSetEntity()) {
+            $parameters = ['id' => $data->getEntity()->getId()];
+            foreach ($actions as $action) {
+                $data->addLink($action, $data->generateUrl('_'.$action, $parameters), $action);
+            }
+        }
+        $data->addLink('index', $data->generateUrl('_index', ['page' => 1]), 'Back');
 
         return $this;
     }
@@ -82,27 +109,25 @@ abstract class AbstractPaginationController extends AbstractController
     {
         $this->listUrl($data, ['show']);
         $this->paginationUrl($data);
+        $this->EntityUrl($data, ['show']);
 
         return $this;
     }
 
     protected function IndexAction(): Response
     {
-        return $this->redirectToRoute($this->data->getRoute('_page'), ['page' => 1]);
+        return $this->redirect($this->data->generateUrl('_page', ['page' => 1]));
     }
 
     protected function PageAction(AbstractRepository $EmptyRowRepository, int $page): Response
     {
         $this->data->setPagination($EmptyRowRepository->getPage($page));
 
-        $currentPage = $this->data->getPagination()->getCurrentPage();
-        $currentUrl = $this->generateUrl($this->data->getroute('_page'), ['page' => $currentPage]);
-
-        if ($page === $currentPage) {
+        if ($page === $this->data->getPagination()->getCurrentPage()) {
             return $this->dataRender('index.html.twig');
         }
 
-        return $this->redirectToRoute($this->data->getRoute('_page'), ['page' => $currentPage]);
+        return $this->redirect($this->data->generateUrl('_page', ['page' => $this->data->getPagination()->getCurrentPage()]));
     }
 
     protected function showAction(EntityInterface $entity): Response

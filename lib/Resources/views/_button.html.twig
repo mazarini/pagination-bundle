@@ -1,4 +1,4 @@
-{% if data.currentRoute == 'show' %}
+{% if data.currentAction == 'show' %}
 	{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.index } %}
 	{% if data.links.edit.url != '#' %}
 		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.edit } %}
