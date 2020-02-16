@@ -22,22 +22,14 @@ namespace App\Controller;
 use App\Entity\Five;
 use App\Repository\FiveRepository;
 use Mazarini\PaginationBundle\Controller\AbstractPaginationController;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/five")
  */
 class FiveController extends AbstractPaginationController
 {
-    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $router)
-    {
-        parent::__construct($requestStack, $router, 'five');
-        $this->twigFolder = 'five/';
-    }
-
     /**
      * @Route("/", name="five_index", methods={"GET"})
      */

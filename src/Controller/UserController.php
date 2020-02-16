@@ -22,22 +22,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Mazarini\PaginationBundle\Controller\AbstractPaginationController;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/")
  */
 class UserController extends AbstractPaginationController
 {
-    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $router)
-    {
-        parent::__construct($requestStack, $router, 'user');
-        $this->twigFolder = 'user/';
-    }
-
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */

@@ -22,22 +22,14 @@ namespace App\Controller;
 use App\Entity\Zero;
 use App\Repository\ZeroRepository;
 use Mazarini\PaginationBundle\Controller\AbstractPaginationController;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/zero")
  */
 class ZeroController extends AbstractPaginationController
 {
-    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $router)
-    {
-        parent::__construct($requestStack, $router, 'zero');
-        $this->twigFolder = 'zero/';
-    }
-
     /**
      * @Route("/", name="zero_index", methods={"GET"})
      */

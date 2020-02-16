@@ -23,17 +23,10 @@ use Mazarini\PaginationBundle\Repository\AbstractRepository;
 use Mazarini\ToolsBundle\Controller\AbstractController;
 use Mazarini\ToolsBundle\Data\Data;
 use Mazarini\ToolsBundle\Entity\EntityInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 abstract class AbstractPaginationController extends AbstractController
 {
-    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $router, string $baseRoute)
-    {
-        parent::__construct($requestStack, $router, $baseRoute);
-    }
-
     protected function PaginationUrl(Data $data): AbstractController
     {
         if ($data->isSetEntities()) {
@@ -135,5 +128,29 @@ abstract class AbstractPaginationController extends AbstractController
         $this->data->setEntity($entity);
 
         return $this->dataRender('show.html.twig', []);
+    }
+
+    protected function setNewUrl(Data $data): void
+    {
+    }
+
+    /**
+     * getCrudAction.
+     *
+     * @return array<string,string>
+     */
+    protected function getCrudAction(): array
+    {
+        return ['_show' => 'Show'];
+    }
+
+    /**
+     * getListAction.
+     *
+     * @return array<string,string>
+     */
+    protected function getListAction(): array
+    {
+        return ['_show' => 'Show'];
     }
 }

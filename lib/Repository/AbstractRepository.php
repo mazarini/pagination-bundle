@@ -19,40 +19,49 @@
 
 namespace Mazarini\PaginationBundle\Repository;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\Tools\Pagination\CountWalker;
-use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
-use Mazarini\ToolsBundle\Pagination\Pagination;
+use Doctrine\ORM\QueryBuilder;
+use Mazarini\ToolsBundle\Entity\EntityInterface;
+use Mazarini\ToolsBundle\Repository\EntityRepositoryAbstract;
 
-abstract class AbstractRepository extends ServiceEntityRepository
+abstract class AbstractRepository extends EntityRepositoryAbstract
 {
-    public function __construct(ManagerRegistry $registry, string $class)
+    /**
+     * @var string
+     */
+    protected $orderColumn = 'e.id';
+
+    /**
+     * @var string
+     */
+    protected $orderDirection = 'ASC';
+
+    protected function totalCount(): int
     {
-        parent::__construct($registry, $class);
+        return $this->getPageQueryBuilder()
+                ->select('count(e.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
     }
 
-    public function getPage(int $currentPage = 1, int $pageSize = 10): Pagination
+    /**
+     * getResult.
+     *
+     * @return array<int, EntityInterface>
+     */
+    protected function getResult(int $start, int $pageSize): array
     {
-        $query = $this->createQueryBuilder('a')
-            ->addSelect('a')
-            ->orderBy('a.id', 'ASC')
-            ->getQuery()
-            ->setHint(CountWalker::HINT_DISTINCT, false)
-            ->setMaxResults($pageSize)
-        ;
-        $paginator = new DoctrinePaginator($query, true);
-        $totalCount = $paginator->count();
-        if (0 === $totalCount) {
-            return new Pagination(new \ArrayIterator([]), $currentPage, $totalCount, $pageSize);
-        }
-        $current = Pagination::CURRENT_PAGE($currentPage, $pageSize, $totalCount);
-        if ($current !== $currentPage) {
-            return new Pagination(new \ArrayIterator([]), $current, $totalCount, $pageSize);
-        }
-        $query->setFirstResult(($currentPage - 1) * $pageSize);
-        $result = $paginator->getIterator();
+        $result = $this->getPageQueryBuilder()
+                ->orderBy($this->orderColumn, $this->orderDirection)
+                ->setFirstResult($start)
+                ->setMaxResults($pageSize)
+                ->getQuery()
+                ->getResult();
 
-        return new Pagination($result, $currentPage, $totalCount, $pageSize);
+        return $result;
+    }
+
+    protected function getPageQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('e');
     }
 }
