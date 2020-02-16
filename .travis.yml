@@ -35,7 +35,7 @@ jobs:
     - php: nightly
       env: OPTION="nightly"
            STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
 
 #   symfony version
     - php: 7.2
@@ -48,14 +48,14 @@ jobs:
     - php: 7.2
       env: SYMFONY="4.4.*"
            STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
     - php: 7.2
       env: STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
     - php: 7.2
       env: SYMFONY="5.1.*"
            STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
 
   allow_failures:
 
@@ -63,20 +63,20 @@ jobs:
     - php: nightly
       env: OPTION="nightly"
            STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
 
 #   symfony dev version
     - php: 7.2
       env: SYMFONY="4.4.*"
            STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
     - php: 7.2
       env: STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
     - php: 7.2
       env: SYMFONY="5.1.*"
            STABILITY="dev"
-           SYMFONY_DEPRECATIONS_HELPER=6
+           SYMFONY_DEPRECATIONS_HELPER=8
 
 before_install:
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
