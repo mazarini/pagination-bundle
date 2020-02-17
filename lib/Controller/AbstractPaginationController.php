@@ -109,7 +109,10 @@ abstract class AbstractPaginationController extends AbstractController
 
     protected function IndexAction(): Response
     {
-        return $this->redirect($this->data->generateUrl('_page', ['page' => 1]));
+        $parameters = $this->getPageParameters();
+        $parameters['page'] = 1;
+
+        return $this->redirect($this->data->generateUrl('_page', $parameters));
     }
 
     protected function PageAction(AbstractRepository $EmptyRowRepository, int $page): Response
@@ -120,7 +123,10 @@ abstract class AbstractPaginationController extends AbstractController
             return $this->dataRender('index.html.twig');
         }
 
-        return $this->redirect($this->data->generateUrl('_page', ['page' => $this->data->getPagination()->getCurrentPage()]));
+        $parameters = $this->getPageParameters();
+        $parameters['page'] = $this->data->getPagination()->getCurrentPage();
+
+        return $this->redirect($this->data->generateUrl('_page', $parameters));
     }
 
     protected function showAction(EntityInterface $entity): Response
