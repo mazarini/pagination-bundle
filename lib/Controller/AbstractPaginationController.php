@@ -21,12 +21,15 @@ namespace Mazarini\PaginationBundle\Controller;
 
 use Mazarini\PaginationBundle\Repository\AbstractRepository;
 use Mazarini\ToolsBundle\Controller\AbstractController;
+use Mazarini\ToolsBundle\Controller\PaginationTrait;
 use Mazarini\ToolsBundle\Data\Data;
 use Mazarini\ToolsBundle\Entity\EntityInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractPaginationController extends AbstractController
 {
+    use PaginationTrait;
+
     protected function IndexAction(): Response
     {
         $parameters = $this->getPageParameters();
@@ -58,25 +61,5 @@ abstract class AbstractPaginationController extends AbstractController
 
     protected function setNewUrl(Data $data): void
     {
-    }
-
-    /**
-     * getCrudAction.
-     *
-     * @return array<string,string>
-     */
-    protected function getCrudAction(): array
-    {
-        return ['_show' => 'Show'];
-    }
-
-    /**
-     * getListAction.
-     *
-     * @return array<string,string>
-     */
-    protected function getListAction(): array
-    {
-        return ['_show' => 'Show'];
     }
 }
