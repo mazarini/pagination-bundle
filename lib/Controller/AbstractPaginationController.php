@@ -35,7 +35,7 @@ abstract class AbstractPaginationController extends AbstractController
         $parameters = $this->getPageParameters();
         $parameters['page'] = 1;
 
-        return $this->redirect($this->data->generateUrl('_page', $parameters));
+        return $this->redirect($this->data->generateUrl('_page', $parameters), Response::HTTP_MOVED_PERMANENTLY);
     }
 
     protected function PageAction(AbstractRepository $EmptyRowRepository, int $page): Response

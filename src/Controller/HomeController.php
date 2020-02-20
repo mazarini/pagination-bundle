@@ -19,38 +19,22 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
-use Mazarini\PaginationBundle\Controller\AbstractPaginationController;
+use Mazarini\ToolsBundle\Controller\HomeControllerAbstract;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/user")
- */
-class UserController extends AbstractPaginationController
+class HomeController extends HomeControllerAbstract
 {
-    /**
-     * @Route("/", name="user_index", methods={"GET"})
-     */
-    public function index(): Response
+    protected function getRedirectUrl(): string
     {
-        return $this->indexAction();
+        return $this->generateUrl('user_index');
     }
 
     /**
-     * @Route("/page-{page<[1-9]\d*>}.html", name="user_page", methods={"GET"})
+     * @Route("/")
      */
-    public function page(UserRepository $UserRepository, int $page): Response
+    public function home(): Response
     {
-        return $this->PageAction($UserRepository, $page);
-    }
-
-    /**
-     * @Route("/show-{id<[1-9]\d*>}.html", name="user_show", methods={"GET"})
-     */
-    public function show(User $entity): Response
-    {
-        return $this->showAction($entity);
+        return parent::home();
     }
 }
