@@ -1127,12 +1127,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/tools-bundle.git",
-                "reference": "8ca1b977f2d531545086419bfacd5e7ef77ce9db"
+                "reference": "e8547b1e13f986480b35c4f416549e23b50d978e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/8ca1b977f2d531545086419bfacd5e7ef77ce9db",
-                "reference": "8ca1b977f2d531545086419bfacd5e7ef77ce9db",
+                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/e8547b1e13f986480b35c4f416549e23b50d978e",
+                "reference": "e8547b1e13f986480b35c4f416549e23b50d978e",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1193,7 @@
                 "symfony",
                 "toolset"
             ],
-            "time": "2020-02-20T10:10:58+00:00"
+            "time": "2020-02-23T10:46:48+00:00"
         },
         {
             "name": "ocramius/package-versions",

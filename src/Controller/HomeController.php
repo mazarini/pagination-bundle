@@ -20,6 +20,7 @@
 namespace App\Controller;
 
 use Mazarini\ToolsBundle\Controller\HomeControllerAbstract;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,10 +32,10 @@ class HomeController extends HomeControllerAbstract
     }
 
     /**
-     * @Route("/")
+     * @Route("")
      */
-    public function home(): Response
+    public function home(Request $request): Response
     {
-        return parent::home();
+        return parent::home($request);
     }
 }
