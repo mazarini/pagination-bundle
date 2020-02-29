@@ -17,28 +17,38 @@
  * You should have received a copy of the GNU General Public License
  */
 
-namespace App\DataFixtures;
+namespace Mazarini\PaginationBundle\Tool;
 
-use App\Entity\Ten;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
 use Mazarini\ToolsBundle\Entity\EntityInterface;
 
-class TenFixtures extends Fixture
+interface PaginationInterface
 {
-    public function load(ObjectManager $manager): void
-    {
-        for ($i = 1; $i <= 95; ++$i) {
-            $manager->persist($this->getEntity($i));
-        }
+    public static function CURRENT_PAGE(int $currentPage, int $pageSize, int $totalCount): int;
 
-        $manager->flush();
-    }
+    /**
+     * getEntities.
+     *
+     * @return \ArrayIterator<int,EntityInterface>
+     */
+    public function getEntities(): \ArrayIterator;
 
-    protected function getEntity(int $i): EntityInterface
-    {
-        $entity = new Ten();
+    public function hasToPaginate(): bool;
 
-        return $entity->setCol1(sprintf('row%02d / col1', $i))->setCol2(sprintf('row%02d / col2', $i));
-    }
+    public function hasPreviousPage(): bool;
+
+    public function getFirstPage(): int;
+
+    public function getPreviousPage(): int;
+
+    public function getCurrentPage(): int;
+
+    public function hasNextPage(): bool;
+
+    public function getNextPage(): int;
+
+    public function getLastPage(): int;
+
+    public function count(): int;
+
+    public function totalCount(): int;
 }

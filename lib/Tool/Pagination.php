@@ -17,21 +17,32 @@
  * You should have received a copy of the GNU General Public License
  */
 
-namespace App\Repository;
+namespace Mazarini\PaginationBundle\Tool;
 
-use App\Entity\Five;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Mazarini\PaginationBundle\Repository\AbstractRepository;
-
-/**
- * @method Five|null find($id, $lockMode = null, $lockVersion = null)
- * @method Five|null findOneBy(array $criteria, array $orderBy = null)
- * @method Five[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class FiveRepository extends AbstractRepository
+class Pagination extends Pages implements PaginationInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    public function hasToPaginate(): bool
     {
-        parent::__construct($registry, Five::class);
+        return $this->getLastPage() > 1;
+    }
+
+    public function hasPreviousPage(): bool
+    {
+        return $this->currentPage > 1;
+    }
+
+    public function getPreviousPage(): int
+    {
+        return max(1, $this->currentPage - 1);
+    }
+
+    public function hasNextPage(): bool
+    {
+        return $this->currentPage < $this->getLastPage();
+    }
+
+    public function getNextPage(): int
+    {
+        return (int) min($this->currentPage + 1, $this->getLastPage());
     }
 }

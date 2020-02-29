@@ -21,9 +21,8 @@ namespace Mazarini\PaginationBundle\Repository;
 
 use Doctrine\ORM\QueryBuilder;
 use Mazarini\ToolsBundle\Entity\EntityInterface;
-use Mazarini\ToolsBundle\Repository\EntityRepositoryAbstract;
 
-abstract class AbstractRepository extends EntityRepositoryAbstract
+abstract class EntityRepositoryAbstract extends ObjectRepositoryAbstract
 {
     /**
      * @var string
