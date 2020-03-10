@@ -1127,12 +1127,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/tools-bundle.git",
-                "reference": "1609a24c6c21ed58595fe467119dde3f789b5109"
+                "reference": "b52965eb11b6697aba47224064b1892bead3fd18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/1609a24c6c21ed58595fe467119dde3f789b5109",
-                "reference": "1609a24c6c21ed58595fe467119dde3f789b5109",
+                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/b52965eb11b6697aba47224064b1892bead3fd18",
+                "reference": "b52965eb11b6697aba47224064b1892bead3fd18",
                 "shasum": ""
             },
             "require": {
@@ -1155,6 +1155,7 @@
                 "doctrine/orm": "^2.7",
                 "mazarini/bootstrap-bundle": "^0.9|^1.0dev",
                 "mazarini/package": "^1.1",
+                "mazarini/pagination-bundle": "^1.0@dev",
                 "mazarini/test-bundle": "^0.9|^1.0dev",
                 "symfony/debug-pack": "^1.0",
                 "symfony/maker-bundle": "^1.14",
@@ -1192,7 +1193,7 @@
                 "symfony",
                 "toolset"
             ],
-            "time": "2020-02-28T14:28:37+00:00"
+            "time": "2020-03-10T07:48:59+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4896,35 +4897,42 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/test-bundle.git",
-                "reference": "59eb96e6f88152e667d10477795f913288cc0dfa"
+                "reference": "f40a82dc321d90da4fdfb02ad5c1d07d943229c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/59eb96e6f88152e667d10477795f913288cc0dfa",
-                "reference": "59eb96e6f88152e667d10477795f913288cc0dfa",
+                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/f40a82dc321d90da4fdfb02ad5c1d07d943229c2",
+                "reference": "f40a82dc321d90da4fdfb02ad5c1d07d943229c2",
                 "shasum": ""
             },
             "require": {
+                "doctrine/doctrine-bundle": "^2.0",
+                "doctrine/orm": "^2.7",
                 "ext-ctype": "*",
                 "ext-iconv": "*",
                 "ext-mbstring": "*",
-                "mazarini/tools-bundle": "^0.9|^1.0@dev",
+                "mazarini/bootstrap-bundle": "^1.0dev",
+                "mazarini/pagination-bundle": "^1.0@dev",
+                "mazarini/tools-bundle": "^1.0dev",
                 "php": "^7.2|^8.0",
-                "symfony/console": "^4.4|^5.0",
+                "sensio/framework-extra-bundle": "^5.5",
+                "symfony/apache-pack": "^1.0",
                 "symfony/dotenv": "^4.4|^5.0",
                 "symfony/flex": "^1.6",
-                "symfony/framework-bundle": "^4.4|^5.0",
-                "symfony/translation": "^4.4|^5.0",
+                "symfony/form": "^4.4|^5.0",
+                "symfony/security-bundle": "^4.4|^5.0",
+                "symfony/security-csrf": "^4.4|^5.0",
+                "symfony/twig-pack": "^1.0",
+                "symfony/validator": "^4.4|^5.0",
                 "symfony/yaml": "^4.4|^5.0"
             },
             "conflict": {
                 "symfony/symfony": "*"
             },
             "require-dev": {
-                "doctrine/doctrine-bundle": "^2.0",
-                "doctrine/orm": "^2.7",
-                "mazarini/bootstrap-bundle": "^0.9|^1.0@dev",
-                "mazarini/package": "^1.1",
+                "dama/doctrine-test-bundle": "^6.2",
+                "doctrine/doctrine-fixtures-bundle": "^3.3",
+                "mazarini/package": "^1.0@dev",
                 "symfony/debug-pack": "^1.0",
                 "symfony/maker-bundle": "^1.14",
                 "symfony/test-pack": "^1.0"
@@ -4961,7 +4969,7 @@
                 "symfony",
                 "test"
             ],
-            "time": "2020-02-20T08:26:15+00:00"
+            "time": "2020-03-10T10:15:55+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5095,6 +5103,28 @@
                 "php"
             ],
             "time": "2019-11-08T13:50:10+00:00"
+        },
+        {
+            "name": "symfony/apache-pack",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "shasum": ""
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "time": "2017-12-12T01:46:35+00:00"
         },
         {
             "name": "symfony/browser-kit",
