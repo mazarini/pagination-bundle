@@ -1055,12 +1055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/bootstrap-bundle.git",
-                "reference": "e3c13ca319d4d7e0d28612338d4bd88eaa837f90"
+                "reference": "55b6966cc0b64c61dd1aed857f7e78214fe51968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/bootstrap-bundle/zipball/e3c13ca319d4d7e0d28612338d4bd88eaa837f90",
-                "reference": "e3c13ca319d4d7e0d28612338d4bd88eaa837f90",
+                "url": "https://api.github.com/repos/mazarini/bootstrap-bundle/zipball/55b6966cc0b64c61dd1aed857f7e78214fe51968",
+                "reference": "55b6966cc0b64c61dd1aed857f7e78214fe51968",
                 "shasum": ""
             },
             "require": {
@@ -1084,6 +1084,7 @@
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/orm": "*",
                 "mazarini/package": "^1.0",
+                "mazarini/pagination-bundle": "^0.9|^1.0@dev",
                 "mazarini/test-bundle": "^0.9|^1.0@dev",
                 "symfony/debug-pack": "^1.0",
                 "symfony/maker-bundle": "^1.14",
@@ -1119,7 +1120,7 @@
             "keywords": [
                 "symfony"
             ],
-            "time": "2020-02-20T08:04:24+00:00"
+            "time": "2020-03-11T20:30:16+00:00"
         },
         {
             "name": "mazarini/tools-bundle",
@@ -1127,12 +1128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/tools-bundle.git",
-                "reference": "b52965eb11b6697aba47224064b1892bead3fd18"
+                "reference": "d89676c5895bd803b33c1f68aa32a6021e9edbff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/b52965eb11b6697aba47224064b1892bead3fd18",
-                "reference": "b52965eb11b6697aba47224064b1892bead3fd18",
+                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/d89676c5895bd803b33c1f68aa32a6021e9edbff",
+                "reference": "d89676c5895bd803b33c1f68aa32a6021e9edbff",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1194,7 @@
                 "symfony",
                 "toolset"
             ],
-            "time": "2020-03-10T07:48:59+00:00"
+            "time": "2020-03-11T17:05:09+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2561,16 +2562,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.0.5",
+            "version": "v5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "6f9c2ba72f4295d7ce6cf9f79dbb18036291d335"
+                "reference": "26fb006a2c7b6cdd23d52157b05f8414ffa417b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6f9c2ba72f4295d7ce6cf9f79dbb18036291d335",
-                "reference": "6f9c2ba72f4295d7ce6cf9f79dbb18036291d335",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/26fb006a2c7b6cdd23d52157b05f8414ffa417b6",
+                "reference": "26fb006a2c7b6cdd23d52157b05f8414ffa417b6",
                 "shasum": ""
             },
             "require": {
@@ -2612,7 +2613,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2020-02-14T07:43:07+00:00"
+            "time": "2020-03-30T14:14:32+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -2845,16 +2846,16 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v5.0.5",
+            "version": "v5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "9b3e5b5e58c56bbd76628c952d2b78556d305f3c"
+                "reference": "481b7d6da88922fb1e0d86a943987722b08f3955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/9b3e5b5e58c56bbd76628c952d2b78556d305f3c",
-                "reference": "9b3e5b5e58c56bbd76628c952d2b78556d305f3c",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/481b7d6da88922fb1e0d86a943987722b08f3955",
+                "reference": "481b7d6da88922fb1e0d86a943987722b08f3955",
                 "shasum": ""
             },
             "require": {
@@ -2903,7 +2904,7 @@
                 "mime",
                 "mime-type"
             ],
-            "time": "2020-02-04T09:41:09+00:00"
+            "time": "2020-03-27T16:56:45+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -3077,16 +3078,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.14.0",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "6842f1a39cf7d580655688069a03dd7cd83d244a"
+                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/6842f1a39cf7d580655688069a03dd7cd83d244a",
-                "reference": "6842f1a39cf7d580655688069a03dd7cd83d244a",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
                 "shasum": ""
             },
             "require": {
@@ -3100,7 +3101,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -3135,20 +3136,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-01-17T12:01:36+00:00"
+            "time": "2020-03-09T19:04:49+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.14.0",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2"
+                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
-                "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
                 "shasum": ""
             },
             "require": {
@@ -3160,7 +3161,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -3194,20 +3195,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-01-13T11:15:53+00:00"
+            "time": "2020-03-09T19:04:49+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.14.0",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf"
+                "reference": "37b0976c78b94856543260ce09b460a7bc852747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
-                "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/37b0976c78b94856543260ce09b460a7bc852747",
+                "reference": "37b0976c78b94856543260ce09b460a7bc852747",
                 "shasum": ""
             },
             "require": {
@@ -3216,7 +3217,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -3249,7 +3250,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-01-13T11:15:53+00:00"
+            "time": "2020-02-27T09:26:54+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -4897,12 +4898,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/test-bundle.git",
-                "reference": "f40a82dc321d90da4fdfb02ad5c1d07d943229c2"
+                "reference": "c8f61da865b68c82e91eacdf6fb85996e6d5edf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/f40a82dc321d90da4fdfb02ad5c1d07d943229c2",
-                "reference": "f40a82dc321d90da4fdfb02ad5c1d07d943229c2",
+                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/c8f61da865b68c82e91eacdf6fb85996e6d5edf5",
+                "reference": "c8f61da865b68c82e91eacdf6fb85996e6d5edf5",
                 "shasum": ""
             },
             "require": {
@@ -4969,7 +4970,7 @@
                 "symfony",
                 "test"
             ],
-            "time": "2020-03-10T10:15:55+00:00"
+            "time": "2020-03-11T17:16:29+00:00"
         },
         {
             "name": "monolog/monolog",
